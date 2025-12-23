@@ -25,7 +25,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0; padding: 0;
             line-height: 1.7;
             color: var(--text);
@@ -37,7 +37,6 @@
             color: white;
             padding: 3rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         nav {
@@ -56,10 +55,7 @@
             padding: 8px 16px;
             font-weight: bold;
             margin: 0 5px;
-            border-radius: 4px;
         }
-
-        nav a:hover { background: var(--secondary); }
 
         .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
 
@@ -71,12 +67,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        h2 {
-            color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-            display: inline-block;
-            margin-bottom: 25px;
-        }
+        h2 { color: var(--primary); border-bottom: 3px solid var(--primary); display: inline-block; margin-bottom: 25px; }
 
         .content-grid {
             display: grid;
@@ -86,12 +77,7 @@
 
         @media (max-width: 1000px) { .content-grid { grid-template-columns: 1fr; } }
 
-        .theory-panel {
-            background: #fdfdfd;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-        }
+        .theory-panel { background: #fdfdfd; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
 
         .formula-card {
             background: #fff5f5;
@@ -104,28 +90,32 @@
             border: 1px dashed #ef9a9a;
         }
 
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
+            height: 0;
+            overflow: hidden;
             border-radius: 12px;
-            background: #eee;
+            background: #000;
         }
 
-        footer {
-            background: #202124;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
+
+        footer { background: #202124; color: white; text-align: center; padding: 30px; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>VẬT LÍ 12 - KẾT NỐI TRI THỨC</h1>
-    <p>Khám phá lý thuyết và thí nghiệm ảo tương tác</p>
+    <p>Giao diện hỗ trợ học tập trực quan</p>
 </header>
 
 <nav>
@@ -141,17 +131,14 @@
         <h2>Chương I: Vật Lí Nhiệt</h2>
         <div class="content-grid">
             <div class="theory-panel">
-                <h3>Lý thuyết cơ bản</h3>
-                <p>Nội năng và định luật I nhiệt động lực học:</p>
+                <h3>Lý thuyết</h3>
+                <p>Định luật I nhiệt động lực học:</p>
                 <div class="formula-card">$$\Delta U = A + Q$$</div>
-                <p>Nhiệt dung riêng và sự chuyển thể:</p>
-                <div class="formula-card">$$Q = m \cdot c \cdot \Delta t$$</div>
                 
-
-[Image of molecular arrangement in solids, liquids, and gases]
-
             </div>
-            <iframe src="https://phet.colorado.edu/sims/html/states-of-matter-basics/latest/states-of-matter-basics_vi.html"></iframe>
+            <div class="video-container">
+                <iframe src="https://phet.colorado.edu/sims/html/states-of-matter-basics/latest/states-of-matter-basics_vi.html"></iframe>
+            </div>
         </div>
     </section>
 
@@ -159,17 +146,17 @@
         <h2>Chương II: Khí Lí Tưởng</h2>
         <div class="content-grid">
             <div class="theory-panel">
-                <h3>Phương trình trạng thái</h3>
-                <p>Mối quan hệ giữa $p, V, T$ của một lượng khí:</p>
+                <h3>Lý thuyết</h3>
+                <p>Phương trình trạng thái:</p>
                 <div class="formula-card">$$p \cdot V = n \cdot R \cdot T$$</div>
-                <p>Định luật Boyle (Đẳng nhiệt):</p>
-                <div class="formula-card">$$p_1 V_1 = p_2 V_2$$</div>
                 
 
-[Image of pressure-volume graph for an ideal gas]
+[Image of p-V diagram showing isothermal process]
 
             </div>
-            <iframe src="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_vi.html"></iframe>
+            <div class="video-container">
+                <iframe src="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_vi.html"></iframe>
+            </div>
         </div>
     </section>
 
@@ -177,17 +164,17 @@
         <h2>Chương III: Từ Trường</h2>
         <div class="content-grid">
             <div class="theory-panel">
-                <h3>Lực Từ & Cảm Ứng Từ</h3>
-                <p>Lực từ tác dụng lên dây dẫn thẳng:</p>
-                <div class="formula-card">$$F = B \cdot I \cdot L \cdot \sin \alpha$$</div>
-                <p>Từ trường của dòng điện tròn tại tâm:</p>
-                <div class="formula-card">$$B = 2\pi \cdot 10^{-7} \frac{N \cdot I}{R}$$</div>
+                <h3>Lý thuyết</h3>
+                <p>Lực từ tác dụng lên điện tích (Lorentz):</p>
+                <div class="formula-card">$$f = |q|vB\sin\alpha$$</div>
                 
 
-[Image of magnetic field lines around a straight current-carrying wire]
+[Image of magnetic field lines around a solenoid]
 
             </div>
-            <iframe src="https://phet.colorado.edu/sims/html/magnet-and-compass/latest/magnet-and-compass_vi.html"></iframe>
+            <div class="video-container">
+                <iframe src="https://phet.colorado.edu/sims/html/magnet-and-compass/latest/magnet-and-compass_vi.html"></iframe>
+            </div>
         </div>
     </section>
 
@@ -195,22 +182,23 @@
         <h2>Chương IV: Vật Lí Hạt Nhân</h2>
         <div class="content-grid">
             <div class="theory-panel">
-                <h3>Năng Lượng & Phóng Xạ</h3>
-                <p>Năng lượng nghỉ của hạt nhân:</p>
-                <div class="formula-card">$$E = m \cdot c^2$$</div>
-                <p>Định luật phân rã phóng xạ:</p>
-                <div class="formula-card">$$N = N_0 \cdot 2^{-\frac{t}{T}}$$</div>
+                <h3>Lý thuyết</h3>
+                <p>Định luật phóng xạ:</p>
+                <div class="formula-card">$$H = H_0 \cdot e^{-\lambda t}$$</div>
+                <p>Năng lượng liên kết hạt nhân:</p>
+                <div class="formula-card">$$W_{lk} = \Delta m \cdot c^2$$</div>
                 
             </div>
-            <iframe src="https://phet.colorado.edu/sims/html/radiometric-dating/latest/radiometric-dating_vi.html"></iframe>
+            <div class="video-container">
+                <iframe src="https://phet.colorado.edu/sims/html/rutherford-scattering/latest/rutherford-scattering_vi.html"></iframe>
+            </div>
         </div>
     </section>
 
 </div>
 
 <footer>
-    <p><strong>Website hỗ trợ học tập Vật Lí 12</strong></p>
-    <p>Dữ liệu dựa trên chương trình GDPT 2018 - Kết nối tri thức với cuộc sống</p>
+    <p>© 2024 - Tài liệu Vật lí 12 (Sách Kết nối tri thức)</p>
 </footer>
 
 </body>
