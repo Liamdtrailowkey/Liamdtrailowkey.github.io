@@ -4,38 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vật Lí 12 - Kết Nối Tri Thức</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <style>
-        /* Cài đặt chung */
         :root {
             --primary-color: #0056b3;
-            --secondary-color: #f0f8ff;
-            --text-color: #333;
-            --bg-color: #fff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #e67e22;
+            --text-color: #2c3e50;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0; padding: 0;
             line-height: 1.6;
             color: var(--text-color);
+            background-color: #f4f7f6;
         }
 
-        /* Header */
         header {
-            background: linear-gradient(to right, #0056b3, #00a8cc);
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.9; }
-
-        /* Navigation */
         nav {
-            background: #333;
-            padding: 0.5rem;
+            background: #222;
+            padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -43,213 +41,162 @@
         }
 
         nav a {
-            color: white;
+            color: #ddd;
             text-decoration: none;
-            padding: 10px 20px;
-            display: inline-block;
-            font-weight: bold;
+            padding: 10px 15px;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        nav a:hover { background-color: #555; }
+        nav a:hover { color: #fff; background: var(--primary-color); border-radius: 5px; }
 
-        /* Sections */
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-        }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
 
         section {
-            margin-bottom: 60px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid #eee;
+            background: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         h2 {
             color: var(--primary-color);
-            border-left: 5px solid var(--primary-color);
+            border-left: 6px solid var(--accent-color);
             padding-left: 15px;
-            margin-top: 0;
+            text-transform: uppercase;
         }
 
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
             margin-top: 20px;
         }
 
-        @media (max-width: 768px) {
-            .content-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
 
-        /* Thẻ mô phỏng hình ảnh và thí nghiệm */
-        .card {
-            background: var(--secondary-color);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .img-placeholder {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-style: italic;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-        .experiment-box {
-            border: 2px dashed var(--primary-color);
-            padding: 15px;
+        .theory-box { background: var(--secondary-color); padding: 20px; border-radius: 10px; }
+        
+        .experiment-container {
             background: #fff;
-            margin-top: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .experiment-title {
-            font-weight: bold;
-            color: #d32f2f;
-            display: block;
-            margin-bottom: 5px;
-        }
+        iframe { width: 100%; height: 450px; border: none; }
 
-        /* Footer */
-        footer {
-            background: #333;
+        .exp-label {
+            background: var(--accent-color);
             color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+            padding: 5px 15px;
+            font-weight: bold;
+            display: inline-block;
+            border-radius: 0 0 10px 0;
         }
+
+        footer { background: #222; color: white; text-align: center; padding: 30px; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container">
-        <h1>Vật Lí 12</h1>
-        <p>Bộ sách Kết Nối Tri Thức Với Cuộc Sống</p>
-    </div>
+    <h1>VẬT LÍ 12</h1>
+    <p>Sách Kết Nối Tri Thức Với Cuộc Sống - Hệ thống bài học & Thí nghiệm ảo</p>
 </header>
 
 <nav>
-    <a href="#chuong1">Vật lí nhiệt</a>
-    <a href="#chuong2">Khí lí tưởng</a>
-    <a href="#chuong3">Từ trường</a>
-    <a href="#chuong4">Vật lí hạt nhân</a>
+    <a href="#nhiet">VẬT LÍ NHIỆT</a>
+    <a href="#khi">KHÍ LÍ TƯỞNG</a>
+    <a href="#tutruong">TỪ TRƯỜNG</a>
+    <a href="#hatnhan">VẬT LÍ HẠT NHÂN</a>
 </nav>
 
 <div class="container">
 
-    <section id="chuong1">
-        <h2>Chương I: Vật lí nhiệt</h2>
-        <p>Nghiên cứu về các hiện tượng nhiệt, nội năng và các định luật cơ bản chi phối sự truyền và chuyển hóa năng lượng nhiệt.</p>
-        
+    <section id="nhiet">
+        <h2>Chương I: Vật Lí Nhiệt</h2>
         <div class="content-grid">
-            <div class="card">
-                <h3>Lý thuyết trọng tâm</h3>
+            <div class="theory-box">
+                <h3>Nội dung chính</h3>
                 <ul>
                     <li>Mô hình động học phân tử chất khí.</li>
-                    <li>Nội năng và sự biến thiên nội năng ($\Delta U = A + Q$).</li>
-                    <li>Thang nhiệt độ Celsius và Kelvin.</li>
+                    <li>Định luật 1 nhiệt động lực học: $\Delta U = A + Q$.</li>
+                    <li>Sự chuyển thể của các chất.</li>
                 </ul>
-                <div class="img-placeholder">
-                    [Ảnh minh họa: Chuyển động nhiệt của các phân tử]
-                </div>
+                <p><em>Mẹo: Chú ý sự thay đổi động năng phân tử khi tăng nhiệt độ.</em></p>
             </div>
-            <div class="card">
-                <h3>Thí nghiệm & Ứng dụng</h3>
-                <div class="experiment-box">
-                    <span class="experiment-title">🔬 Thí nghiệm minh họa:</span>
-                    Mô phỏng quá trình đun nóng nước đá: Quan sát sự phá vỡ liên kết tinh thể và sự tăng nhiệt độ theo thời gian.
-                </div>
-                <p><strong>Ứng dụng:</strong> Động cơ nhiệt, tủ lạnh, máy điều hòa.</p>
+            <div class="experiment-container">
+                <div class="exp-label">Mô phỏng: Các thể của vật chất</div>
+                <iframe src="https://phet.colorado.edu/sims/html/states-of-matter-basics/latest/states-of-matter-basics_vi.html" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
-    <section id="chuong2">
-        <h2>Chương II: Khí lí tưởng</h2>
-        <p>Khám phá các quy luật chi phối hành vi của chất khí thông qua các thông số trạng thái: Áp suất ($p$), Thể tích ($V$), và Nhiệt độ ($T$).</p>
-        
+    <section id="khi">
+        <h2>Chương II: Khí Lí Tưởng</h2>
         <div class="content-grid">
-            <div class="card">
-                <h3>Lý thuyết trọng tâm</h3>
+            <div class="theory-box">
+                <h3>Nội dung chính</h3>
                 <ul>
-                    <li>Phương trình trạng thái khí lí tưởng: $pV = nRT$.</li>
-                    <li>Định luật Boyle (Đẳng nhiệt).</li>
-                    <li>Định luật Charles (Đẳng áp).</li>
+                    <li>Phương trình trạng thái: $pV = nRT$.</li>
+                    <li>Các đẳng quá trình: Đẳng nhiệt, đẳng tích, đẳng áp.</li>
+                    <li>Mối liên hệ giữa áp suất và động năng phân tử.</li>
                 </ul>
-                <div class="img-placeholder">
-                    [Ảnh minh họa: Đồ thị p-V, V-T, p-T]
-                </div>
+                
+
+[Image of an ideal gas p-V diagram]
+
             </div>
-            <div class="card">
-                <h3>Thí nghiệm & Ứng dụng</h3>
-                <div class="experiment-box">
-                    <span class="experiment-title">🔬 Thí nghiệm minh họa:</span>
-                    Nén khí trong xilanh kín: Quan sát áp suất tăng lên khi thể tích giảm xuống (khi nhiệt độ không đổi).
-                </div>
-                <p><strong>Ứng dụng:</strong> Bơm xe, nồi áp suất, khí động học.</p>
+            <div class="experiment-container">
+                <div class="exp-label">Mô phỏng: Thuộc tính chất khí</div>
+                <iframe src="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_vi.html" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
-    <section id="chuong3">
-        <h2>Chương III: Từ trường</h2>
-        <p>Tìm hiểu về môi trường vật chất đặc biệt tồn tại xung quanh nam châm và dòng điện, cùng tác dụng lực của nó.</p>
-        
+    <section id="tutruong">
+        <h2>Chương III: Từ Trường</h2>
         <div class="content-grid">
-            <div class="card">
-                <h3>Lý thuyết trọng tâm</h3>
+            <div class="theory-box">
+                <h3>Nội dung chính</h3>
                 <ul>
-                    <li>Khái niệm từ trường và đường sức từ.</li>
-                    <li>Lực từ tác dụng lên dây dẫn mang dòng điện ($F = BIl\sin\alpha$).</li>
-                    <li>Cảm ứng từ của dòng điện thẳng dài, dòng điện tròn.</li>
+                    <li>Cảm ứng từ $B$ và đơn vị Tesla ($T$).</li>
+                    <li>Lực từ tác dụng lên đoạn dây dẫn: $F = BIl\sin\alpha$.</li>
+                    <li>Từ trường của dòng điện chạy trong các dây dẫn có hình dạng đặc biệt.</li>
                 </ul>
-                <div class="img-placeholder">
-                    [Ảnh minh họa: Đường sức từ của Trái Đất]
-                </div>
+                
+
+[Image of magnetic field lines around a bar magnet]
+
             </div>
-            <div class="card">
-                <h3>Thí nghiệm & Ứng dụng</h3>
-                <div class="experiment-box">
-                    <span class="experiment-title">🔬 Thí nghiệm minh họa:</span>
-                    Thí nghiệm Oersted: Kim nam châm lệch hướng khi đặt gần dây dẫn có dòng điện chạy qua.
-                </div>
-                <p><strong>Ứng dụng:</strong> Động cơ điện, máy phát điện, tàu đệm từ.</p>
+            <div class="experiment-container">
+                <div class="exp-label">Mô phỏng: Nam châm & La bàn</div>
+                <iframe src="https://phet.colorado.edu/sims/html/magnet-and-compass/latest/magnet-and-compass_vi.html" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
-    <section id="chuong4">
-        <h2>Chương IV: Vật lí hạt nhân</h2>
-        <p>Đi sâu vào cấu trúc bên trong nguyên tử, khám phá nguồn năng lượng khổng lồ từ hạt nhân.</p>
-        
+    <section id="hatnhan">
+        <h2>Chương IV: Vật Lí Hạt Nhân</h2>
         <div class="content-grid">
-            <div class="card">
-                <h3>Lý thuyết trọng tâm</h3>
+            <div class="theory-box">
+                <h3>Nội dung chính</h3>
                 <ul>
-                    <li>Cấu tạo hạt nhân, hệ thức Einstein ($E=mc^2$).</li>
-                    <li>Hiện tượng phóng xạ ($\alpha, \beta, \gamma$).</li>
-                    <li>Phản ứng phân hạch và nhiệt hạch.</li>
+                    <li>Cấu tạo hạt nhân: $Z$ Proton và $(A-Z)$ Neutron.</li>
+                    <li>Năng lượng liên kết và độ hụt khối: $E = \Delta m \cdot c^2$.</li>
+                    <li>Phóng xạ, Phân hạch và Nhiệt hạch.</li>
                 </ul>
-                <div class="img-placeholder">
-                    [Ảnh minh họa: Mô hình phản ứng dây chuyền]
-                </div>
+                
+
+[Image of nuclear fission reaction diagram]
+
             </div>
-            <div class="card">
-                <h3>Thí nghiệm & Ứng dụng</h3>
-                <div class="experiment-box">
-                    <span class="experiment-title">🔬 Thí nghiệm minh họa:</span>
-                    Mô phỏng máy đếm Geiger-Müller phát hiện tia phóng xạ từ mẫu vật.
-                </div>
-                <p><strong>Ứng dụng:</strong> Nhà máy điện hạt nhân, y học hạt nhân (xạ trị), khảo cổ học (C-14).</p>
+            <div class="experiment-container">
+                <div class="exp-label">Mô phỏng: Phân hạch hạt nhân</div>
+                <iframe src="https://phet.colorado.edu/sims/html/nuclear-fission/latest/nuclear-fission_vi.html" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -257,8 +204,8 @@
 </div>
 
 <footer>
-    <p>Website hỗ trợ học tập Vật Lí 12 - Kết Nối Tri Thức</p>
-    <p>&copy; 2024 Physics Project</p>
+    <p><strong>Dự án Website học tập Vật Lí 12</strong></p>
+    <p>Học liệu dựa trên chương trình GDPT 2018 - Bộ sách Kết nối tri thức</p>
 </footer>
 
 </body>
